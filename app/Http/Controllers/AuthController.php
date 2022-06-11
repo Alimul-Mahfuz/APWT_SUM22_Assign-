@@ -40,8 +40,10 @@ class AuthController extends Controller
         ],
        );
        $std=new Student();
-       $mail=$std::where('email',$req->email)->value('email');
-       $pass
+       $user=$std::where('email',$req->email)->where('password',$req->pass)->value('email');
+       if(!empty($user)){
+        return view('udash');
+       }
 
 
     }
