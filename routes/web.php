@@ -17,9 +17,11 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 Route::get('/auth/login',[pageController::class,'login'])->name('login');
 Route::post('/auth/login',[AuthController::class,'login'])->name('login');
 Route::get('/auth/reg',[pageController::class,'reg'])->name('reg');
 Route::post('/auth/reg',[AuthController::class,'reg'])->name('reg');
+Route::get('/dashboard',[pageController::class,'dashboard'])->name('dashboard');
+Route::get('/details/{id}',[pageController::class,'viewdet'])->name('viewdet');
 

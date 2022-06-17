@@ -28,9 +28,13 @@ class AuthController extends Controller
             $std->password=$req->pass;
             $std->save();
 
-
-        return view('udash');
+            
+        // return view('udash')->with('slist',$studentlist);
     }
+
+    // function loadDash(){
+    //     return var_dump($studentlist=Student::all());
+    // }
 
     function login(Request $req){
         $this->validate($req,
@@ -42,7 +46,13 @@ class AuthController extends Controller
        $std=new Student();
        $user=$std::where('email',$req->email)->where('password',$req->pass)->value('email');
        if(!empty($user)){
-        return view('udash');
+        // return view('udash');
+        return redirect()->route('dashboard');
+       }
+       else{
+        
+        return redirect()->route('home');
+
        }
 
 
